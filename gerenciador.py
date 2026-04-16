@@ -14,7 +14,6 @@ def ver_tarefas(lista_tarefas):
   for indice, tarefa in enumerate(lista_tarefas, start=1):
     status = "✓" if tarefa["completada"] else " "
     print(f"{indice}. [{status}] {tarefa['nome']}")
-    return
 
 #  Atualizar lista de tarefas 
 def atualizar_nome_tarefa(lista_tarefas,indice_tarefa, novo_nome_tarefa):
@@ -33,6 +32,14 @@ def completar_tarefa(lista_tarefas, indice_tarefa):
     print(f"Tarefa {indice_tarefa} marcada como completada")
     return 
 
+# Deletar tarefas
+def deletar_tarefas_completadas(lista_tarefas):
+  print("Tarefas completadas foram deletadas")
+  for tarefa in lista_tarefas:
+    if tarefa["completada"] == True:
+      lista_tarefas.remove(tarefa)
+  print("Tarefas completadas foram deletas")
+  return 
 lista_tarefas = []
 
 while True:
@@ -60,6 +67,10 @@ while True:
     ver_tarefas(lista_tarefas)
     indice_tarefa = input("Digite o numero da tarefa que deseja completar: ")
     completar_tarefa(lista_tarefas,indice_tarefa)
+  elif escolha == "5":
+    deletar_tarefas_completadas(lista_tarefas)
+    ver_tarefas(lista_tarefas)
+
   elif escolha == "6":
     break
 
